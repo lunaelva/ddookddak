@@ -29,5 +29,9 @@ public class ArticleController {
 		return "write";
 	}
 	
+	@RequestMapping("/test")
+	public String test() {
+		return "Hello World";
+	}
 
 }
