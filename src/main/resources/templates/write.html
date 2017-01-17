@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>글쓰기</title>
+
+ <script src="/editor/js/ckeditor.js"></script>
+ 
+</head>
+<body>
+	<!--/* <xmp> */-->
+	<h2>Hello! <span th:text="${name}">${name}</span></h2>
+	<div>Thymeleaf version</div>
+	
+	 <form>
+            <textarea name="editor1" id="editor1" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor.
+            </textarea>
+        </form>
+        
+            <script>
+                CKEDITOR.replace( 'editor1' );
+            </script>
+</body>
+</html>
