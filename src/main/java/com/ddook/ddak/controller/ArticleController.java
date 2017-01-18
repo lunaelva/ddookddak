@@ -2,10 +2,14 @@ package com.ddook.ddak.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ddook.ddak.model.Articles;
 import com.ddook.ddak.service.ArticleService;
@@ -33,9 +37,19 @@ public class ArticleController {
 		return "write";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/write", method=RequestMethod.POST)
+	public  writeProc(HttpServletRequest request, @RequestParam Map<String, String> param){
+		
+		if(memberService.isExistMember(userId)){
+			System.out.println("true");
+		}
+		return true;
+	}
+	
 	@RequestMapping("/test")
 	public String test() {
-		return "Hello World By Ryan!!";
+		return "Hello World";
 	}
 
 }
