@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <title>글쓰기</title>
 
- <script src="/editor/js/ckeditor.js"></script>
+ <script src="/editor/ckeditor.js"></script>
  
 </head>
 <body>
@@ -13,13 +13,13 @@
 	<div>Thymeleaf version</div>
 	
 	 <form>
-            <textarea name="editor1" id="editor1" rows="10" cols="80">
-                This is my textarea to be replaced with CKEditor.
-            </textarea>
-        </form>
+          <textarea name="editor1" id="editor1" rows="10" cols="50"></textarea>
+      </form>
+      
+      <a href="javascript:fnSave();">저장</a>
         
-            <script>
-                CKEDITOR.replace( 'editor1' );
-            </script>
+      <script>
+            CKEDITOR.replace( 'editor1' );
+      </script>
 </body>
 </html>
