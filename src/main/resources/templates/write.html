@@ -3,25 +3,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <title>글쓰기</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/editor/ckeditor.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+function fnSave(){
+	var content = CKEDITOR.instances.editor1.getData();
+	jQuery.post("/article/write",{"editor1":content},function(data){
+		console.log(data);
+	});
+}	
+</script>
 
- <script src="/editor/ckeditor.js"></script>
- 
 </head>
 <body>
 	<!--/* <xmp> */-->
-	<h2>Hello! <span th:text="${name}">${name}</span></h2>
+	<h2>
+		Hello! <span th:text="${name}">${name}</span>
+	</h2>
 	<div>Thymeleaf version</div>
-	
-	 <form>
-          <textarea name="editor1" id="editor1" rows="10" cols="50"></textarea>
-      </form>
-      
-      <a href="javascript:fnSave();">저장</a>
-        
-      <script>
-            CKEDITOR.replace( 'editor1' ,{
-            	width:900
-            });
-      </script>
+
+	<form>
+		<textarea name="editor1" id="editor1" rows="10" cols="50"></textarea>
+	</form>
+
+	<a href="javascript:fnSave();">저장</a>
+
+	<script>
+		CKEDITOR.replace('editor1', {
+			width : 900,
+			enterMode : '2'
+		});
+	</script>
 </body>
 </html>
