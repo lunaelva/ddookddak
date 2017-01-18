@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ddook.ddak.model.Articles;
 import com.ddook.ddak.service.ArticleService;
-
+/**
+ * ariticle 
+ * @author lunamaan
+ *
+ */
 @Controller
 @RequestMapping("/article")
 public class ArticleController {
@@ -17,7 +21,7 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 	
-	@RequestMapping("/list")
+	@RequestMapping("/list") 
 	public List<Articles> list(Model model) {
 		List<Articles> articleList = articleService.findArticles();
 		return articleList;
