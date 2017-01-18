@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import com.ddook.ddak.model.Articles;
 import com.ddook.ddak.repository.ArticlesRepository;
 
+/**
+ * Article Service
+ * @author Ryan
+ *
+ */
 @Service
 public class ArticleServiceImpl implements ArticleService{
 	@Autowired
@@ -15,7 +20,8 @@ public class ArticleServiceImpl implements ArticleService{
 	
 	@Override
 	public List<Articles> findArticles(){
-		return articleRepository.findAll();
+		List<Articles> result = articleRepository.findAll();
+		return result;
 	}
 	
 	@Override
