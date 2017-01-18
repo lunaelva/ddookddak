@@ -1,11 +1,17 @@
 package com.ddook.ddak.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ddook.ddak.model.Articles;
 import com.ddook.ddak.service.ArticleService;
@@ -31,6 +37,19 @@ public class ArticleController {
 	public String write(Model model) {
 		model.addAttribute("name","자게이");
 		return "write";
+	}
+	
+
+	@RequestMapping(value="/write", method=RequestMethod.POST)
+	public ModelAndView writeProc(HttpServletRequest request, @RequestParam Map<String, String> param){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("json");	
+		if(articleService.saveArticles(param)){
+			mav.addObject("result", "success");
+		}else{
+			mav.addObject("result", "fail");
+		}
+		return mav;
 	}
 	
 	@RequestMapping("/test")

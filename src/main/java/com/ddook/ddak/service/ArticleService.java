@@ -1,8 +1,7 @@
 package com.ddook.ddak.service;
 
 import java.util.List;
-
-import javax.transaction.Transactional;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -17,5 +16,5 @@ import com.ddook.ddak.model.Articles;
 public interface ArticleService {
 	public List<Articles> findArticles();
 	
-	public void saveArticles(Articles article);
+	public boolean saveArticles(Map<String, String> param);
 }
