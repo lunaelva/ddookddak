@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ddook.ddak.model.Articles;
 
-@Service
-@Transactional 
+@Service 
 public interface ArticleService {
 	public List<Articles> findArticles();
 	public void saveArticles(Articles article);
