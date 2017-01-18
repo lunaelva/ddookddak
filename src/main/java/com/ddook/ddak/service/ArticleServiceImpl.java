@@ -13,7 +13,7 @@ import com.ddook.ddak.repository.ArticlesRepository;
  * @author Ryan
  *
  */
-@Service
+@Service("ddArticleService")
 public class ArticleServiceImpl implements ArticleService{
 	@Autowired
 	private ArticlesRepository articleRepository;
