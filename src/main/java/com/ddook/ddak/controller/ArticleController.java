@@ -39,7 +39,8 @@ public class ArticleController {
 	@RequestMapping(value="/write", method=RequestMethod.POST)
 	public Articles writeProc(@RequestParam Map<String, String> param){
 		Articles article = new Articles();
-		System.out.println("dddd" + param.get("editor1"));
+		
+		article.setContent(param.get("editor1"));
 //		if(articleService.saveArticles(param)){
 //			mav.addObject("result", "success");
 //		}else{

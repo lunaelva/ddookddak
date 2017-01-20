@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>글쓰기</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/editor/ckeditor.js"></script>
+<script type="text/javascript">
+jQuery(function() {
+	//window.parent.CKEDITOR.tools.callFunction('1', 'http://localhost:8080/upload/170120/ckeditor_6668780352041464957.png', '파일 전송 완료.'); 
+});
+</script>
+
+</head>
+<body>
+	
+${fileModel.CKEditorFuncNum}
+${fileModel.imgUrl}
+${msg}
+</body>
+</html>
