@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/view")
 public class ViewController {
 	
-	@RequestMapping("/article/write")
+	@RequestMapping("/board/write")
 	public String write(Model model) {
 		Date date = new Date();
 		

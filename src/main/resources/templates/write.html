@@ -8,9 +8,14 @@
 <script type="text/javascript">
 function fnSave(){
 	var content = CKEDITOR.instances.editor1.getData();
-	jQuery.post("/article/write",{"editor1":content},function(data){
-		console.log(data);
-		alert("자장내용 : "  + data.content);
+	console.log(content);
+	console.log($("#title").val());
+	jQuery.post("/article/write",{"content":content
+		, "title":$("#title").val()
+		, "id":$("#id").val()
+		, "nickname":$("#nickname").val() }	
+		,function(data){
+			console.log(data);
 	});
 }	
 
@@ -33,7 +38,10 @@ jQuery(function() {
 	</h2>
 	<div>Thymeleaf version</div>
 
-	<form>
+	<form id="articleForm">
+		제목 : <input type="text" id="title" name="title" value="title~~~"/><br/>
+		아이디 : <input type="text" id="id" name="id" value="maelva"/><br/>
+		닉네임 : <input type="text" id="nickname" name="nickname" value="maan"/><br/>
 		<textarea name="editor1" id="editor1" rows="10" cols="50"></textarea>
 	</form>
 
