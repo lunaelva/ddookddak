@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<title>글목록</title>
+<style type="text/css">
+table td{border-bottom: 1px dotted #a7a7a7;}
+table th{text-align:center;}
+table {width: 100%;border: none;border-collapse: separate; border-spacing: 0;}
+
+</style>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		jQuery.getJSON("/article/list", function(data){
+			var tmp ="";
+			$.each(data, function(idx, entry){
+				 tmp = tmp + ' <tr> <td class="tit"><a href="/view/article/view/'+entry.articleId+'">'+entry.title+'</a></td>';
+				 tmp = tmp + ' <td>'+entry.nickname+'</td><td>'+new Date(entry.regDate).toLocaleString()+'</td></tr>';
+			});
+			
+			$("#list").append(tmp);
+		});		
+	});
+</script>
+</head>
+<body>
+	<h2>
+		Hello! <span th:text="${name}">${name}</span>
+	</h2>
+	<table>
+		<thead>
+			<tr>		
+				<th>제목</th>
+				<th>닉네임</th>
+				<th>날짜</th>
+			</tr>
+		</thead>
+		
+		<tbody id="list"></tbody>
+	</table>
+	
+	
+	<a href="/view/article/write">글쓰기</a>
+</body>
+</html>

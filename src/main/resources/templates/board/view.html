@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>글목록</title>
+<style type="text/css">
+table td{border-bottom: 1px dotted #a7a7a7;}
+table th{text-align:center;}
+table {width: 100%;border: none;border-collapse: separate; border-spacing: 0;}
+
+</style>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	jQuery.getJSON("/article/"+$("#articleId").text(), function(data){
+		console.log(data)
+		$("#title").text(data.title);
+		$(".content").html(data.content);
+		$("#writer").html(data.nickname + "("+new Date(data.regDate).toLocaleString()+")");
+		
+		$('.content').find('img').each(function(i) {
+	    	console.log($(this).attr("src"));
+			if($(this).width() > 500){
+				$(this).width(500);		
+			}
+		});
+	});
+	
+	$("#update").click(function(){
+		location.href = "/view/article/update/" +$("#articleId").text();
+	});
+    
+});
+</script>
+
+</head>
+<body>
+	<h2>
+		Hello! <span th:text="${name}">${name}</span>
+	</h2>
+	<p>글번호 : <span th:text="${articleId}" id="articleId">${articleId}</span></p>
+	
+	<p>제목 : <span id="title"></span></p>
+	<hr/>
+	<div class="content"></div>
+	<hr/>
+	<p id="writer"></p>
+	
+	<p><a href="javascript:void(0);" id="update">수정</a></p>
+</body>
+
+
+</html>
