@@ -2,6 +2,7 @@ package com.ddook.ddak.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ public class Articles {
 	private String id;
 	private String nickname;
 	private String title;
+	@Column(length = 100000000)
 	private String content;
 	private Date regDate;
 	public String getId() {

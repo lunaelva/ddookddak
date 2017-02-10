@@ -35,7 +35,7 @@ public class ArticleController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value="/write", method=RequestMethod.POST)
+	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public Boolean writeProc(@RequestParam Map<String, String> param, Model model){
 		return articleService.saveArticle(param);
 	}

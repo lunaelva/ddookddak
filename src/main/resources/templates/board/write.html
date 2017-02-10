@@ -6,19 +6,6 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/editor/ckeditor.js"></script>
 <script type="text/javascript">
-function fnSave(){
-	var content = CKEDITOR.instances.editor1.getData();
-	jQuery.post("/article/write",{"content":content
-		, "title":$("#title").val()
-		, "id":$("#id").val()
-		, "nickname":$("#nickname").val() }	
-		,function(data){
-			if(data){
-				location.href="/view/article/list";
-			}
-	});
-}	
-
 
 jQuery(function() {
 	// ckeditor 적용
@@ -29,14 +16,35 @@ jQuery(function() {
 	});
 	
 	if($("#articleId").val() != 0){
-		
+		jQuery.getJSON("/article/"+$("#articleId").val(), function(data){
+			$("#title").val(data.title);
+			$("#id").val(data.id);
+			$("#nickname").val(data.nickname);
+			
+			$("#editor1").val(data.content);
+		});
 	}
+	
+	$("#save").click(function(){
+		var content = CKEDITOR.instances.editor1.getData();
+		var articleId = $("#articleId").val()
+		jQuery.post("/article/save",{"content":content
+			, "title":$("#title").val()
+			, "id":$("#id").val()
+			, "nickname":$("#nickname").val()
+			, "articleId":articleId}	
+			,function(data){
+				if(data){
+					location.href="/view/article/list";
+				}
+		});
+	});
 });
 </script>
 
 </head>
 <body>
-	<input type="hidden" id="articleId" th:attr="value = ${articleId}"/>
+	<input type="text" id="articleId" th:attr="value = ${articleId}"/>
 	<!--/* <xmp> */-->
 	<h2>
 		Hello! <span th:text="${name}">${name}</span>
@@ -50,6 +58,6 @@ jQuery(function() {
 		<textarea name="editor1" id="editor1" rows="10" cols="50"></textarea>
 	</form>
 
-	<a href="javascript:fnSave();">저장</a>
+	<a id="save" href="javascript:void(0);">저장</a>
 </body>
 </html>

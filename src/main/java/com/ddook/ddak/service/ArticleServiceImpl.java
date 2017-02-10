@@ -31,6 +31,7 @@ public class ArticleServiceImpl implements ArticleService{
 	@Override
 	public boolean saveArticle(Map<String, String> param){
 		Articles article = new Articles();
+		article.setArticleId(Long.valueOf(param.get("articleId")));
 		article.setContent(param.get("content"));
 		article.setId(param.get("id"));
 		article.setNickname(param.get("nickname"));
