@@ -16,7 +16,7 @@ import com.ddook.ddak.repository.ArticlesRepository;
 @Transactional
 /**
  * Article Service
- * @author Ryan
+ * @author lunamaan
  *
  */
 public class ArticleServiceImpl implements ArticleService{
@@ -25,12 +25,11 @@ public class ArticleServiceImpl implements ArticleService{
 	
 	@Override
 	public List<Articles> findArticles(){
-		List<Articles> result = articleRepository.findAll();
-		return result;
+		return articleRepository.findAll();
 	}
 	
 	@Override
-	public boolean saveArticles(Map<String, String> param){
+	public boolean saveArticle(Map<String, String> param){
 		Articles article = new Articles();
 		article.setContent(param.get("content"));
 		article.setId(param.get("id"));
@@ -48,6 +47,28 @@ public class ArticleServiceImpl implements ArticleService{
 		}
 		
 		return result;
+	}
+	
+	@Override
+	public Articles getArticle(Long id){
+		return articleRepository.findOne(id);
+	}
+	
+	@Override
+	public void deleteArticle(long articleId){
+		articleRepository.delete(articleId);
+	}
+	
+	@Override
+	public Long updateArticle(Map<String, String> param){
+		Articles article = new Articles();
+		article.setArticleId(Long.valueOf(param.get("articleId")));
+		article.setContent(param.get("content"));
+		article.setId(param.get("id"));
+		article.setNickname(param.get("nickname"));
+		article.setTitle(param.get("title"));
+		
+		return articleRepository.save(article).getArticleId();
 	}
 
 }

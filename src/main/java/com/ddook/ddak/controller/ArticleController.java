@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,14 +36,27 @@ public class ArticleController {
 
 	@ResponseBody
 	@RequestMapping(value="/write", method=RequestMethod.POST)
-	public void writeProc(@RequestParam Map<String, String> param, Model model){
-		if(articleService.saveArticles(param)){
-			model.addAttribute("result", "success");
-		}else{
-			model.addAttribute("result", "fail");
-		}
+	public Boolean writeProc(@RequestParam Map<String, String> param, Model model){
+		return articleService.saveArticle(param);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/{articleId}", method=RequestMethod.DELETE)
+	public Boolean delProc(@RequestParam Map<String, String> param, Model model){
+		return articleService.saveArticle(param);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/{articleId}", method=RequestMethod.PUT)
+	public Boolean updateProc(@RequestParam Map<String, String> param, Model model){
+		return articleService.saveArticle(param);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/{articleId}", method=RequestMethod.GET)
+	public Articles viewProc(@PathVariable("articleId") Long articleId){
+		return articleService.getArticle(articleId);
+	}	
 	
 	@RequestMapping("/test")
 	public String test() {

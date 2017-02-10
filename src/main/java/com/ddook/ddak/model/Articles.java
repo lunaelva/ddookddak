@@ -50,4 +50,7 @@ public class Articles {
 	public Long getArticleId() {
 		return articleId;
 	}
+	public void setArticleId(Long articleId) {
+		this.articleId = articleId;
+	}
 }

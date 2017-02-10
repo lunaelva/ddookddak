@@ -8,14 +8,14 @@
 <script type="text/javascript">
 function fnSave(){
 	var content = CKEDITOR.instances.editor1.getData();
-	console.log(content);
-	console.log($("#title").val());
 	jQuery.post("/article/write",{"content":content
 		, "title":$("#title").val()
 		, "id":$("#id").val()
 		, "nickname":$("#nickname").val() }	
 		,function(data){
-			console.log(data);
+			if(data){
+				location.href="/view/article/list";
+			}
 	});
 }	
 
@@ -27,11 +27,16 @@ jQuery(function() {
 		enterMode : '2',
 		filebrowserImageUploadUrl: '/file/imageUpload'	
 	});
+	
+	if($("#articleId").val() != 0){
+		
+	}
 });
 </script>
 
 </head>
 <body>
+	<input type="hidden" id="articleId" th:attr="value = ${articleId}"/>
 	<!--/* <xmp> */-->
 	<h2>
 		Hello! <span th:text="${name}">${name}</span>

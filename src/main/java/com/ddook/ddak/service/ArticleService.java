@@ -10,11 +10,13 @@ import com.ddook.ddak.model.Articles;
 @Service 
 /**
  * Article Service Interface
- * @author Ryan
+ * @author lunamaan
  *
  */
 public interface ArticleService {
-	public List<Articles> findArticles();
-	
-	public boolean saveArticles(Map<String, String> param);
+	public List<Articles> findArticles();	
+	public boolean saveArticle(Map<String, String> param);
+	public Articles getArticle(Long id);
+	public void deleteArticle(long articleId);
+	public Long updateArticle(Map<String, String> param);
 }
