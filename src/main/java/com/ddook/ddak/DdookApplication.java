@@ -12,10 +12,4 @@ public class DdookApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DdookApplication.class, args);
 	}
-	
-	@RequestMapping("/")
-    public String index(Model model) {
-        model.addAttribute("message", "Handlebars!");
-        return "index";
-    }
 }

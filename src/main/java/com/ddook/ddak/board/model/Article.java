@@ -1,4 +1,4 @@
-package com.ddook.ddak.model;
+package com.ddook.ddak.board.model;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Articles { 
+public class Article { 
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long articleId; 

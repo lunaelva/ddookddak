@@ -1,4 +1,4 @@
-package com.ddook.ddak.controller;
+package com.ddook.ddak.view.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

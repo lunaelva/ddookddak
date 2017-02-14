@@ -1,9 +1,13 @@
-package com.ddook.ddak.controller;
+package com.ddook.ddak.board.controller;
 
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ddook.ddak.model.Articles;
-import com.ddook.ddak.service.ArticleService;
+import com.ddook.ddak.board.model.Article;
+import com.ddook.ddak.board.service.ArticleService;
 /**
  * ariticle 
  * @author lunamaan
@@ -29,32 +33,32 @@ public class ArticleController {
 
 	@ResponseBody
 	@RequestMapping("/list") 
-	public List<Articles> list(Model model) {
-		List<Articles> articleList = articleService.findArticles();
-		return articleList;
+	public Page<Article> list(Model model) {		
+		PageRequest pageRequest = new PageRequest(0, 10, new Sort(Direction.DESC, "articleId")); //현재페이지, 조회할 페이지수, 정렬정보
+		return articleService.findArticles(pageRequest);
 	}
 
 	@ResponseBody
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public Boolean writeProc(@RequestParam Map<String, String> param, Model model){
-		return articleService.saveArticle(param);
+	public void writeProc(@RequestParam Map<String, String> param, Model model){
+		articleService.saveArticle(param);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/{articleId}", method=RequestMethod.DELETE)
-	public Boolean delProc(@RequestParam Map<String, String> param, Model model){
-		return articleService.saveArticle(param);
+	public void delProc(@RequestParam Map<String, String> param, Model model){
+		articleService.saveArticle(param);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/{articleId}", method=RequestMethod.PUT)
-	public Boolean updateProc(@RequestParam Map<String, String> param, Model model){
-		return articleService.saveArticle(param);
+	public void updateProc(@RequestParam Map<String, String> param, Model model){
+		articleService.saveArticle(param);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/{articleId}", method=RequestMethod.GET)
-	public Articles viewProc(@PathVariable("articleId") Long articleId){
+	public Article viewProc(@PathVariable("articleId") Long articleId){
 		return articleService.getArticle(articleId);
 	}	
 	

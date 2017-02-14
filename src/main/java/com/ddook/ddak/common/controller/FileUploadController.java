@@ -1,4 +1,4 @@
-package com.ddook.ddak.controller;
+package com.ddook.ddak.common.controller;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ddook.ddak.model.FileModel;
+import com.ddook.ddak.common.model.FileModel;
 
 
 @Controller

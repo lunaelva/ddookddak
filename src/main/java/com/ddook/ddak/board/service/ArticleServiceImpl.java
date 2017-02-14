@@ -1,16 +1,17 @@
-package com.ddook.ddak.service;
+package com.ddook.ddak.board.service;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.ddook.ddak.model.Articles;
-import com.ddook.ddak.repository.ArticlesRepository;
+import com.ddook.ddak.board.model.Article;
+import com.ddook.ddak.board.repository.ArticlesRepository;
 
 @Service("articleService")
 @Transactional
@@ -24,13 +25,13 @@ public class ArticleServiceImpl implements ArticleService{
 	private ArticlesRepository articleRepository;
 	
 	@Override
-	public List<Articles> findArticles(){
-		return articleRepository.findAll();
+	public Page<Article> findArticles(Pageable pageable){
+		return articleRepository.findAll(pageable);
 	}
 	
 	@Override
-	public boolean saveArticle(Map<String, String> param){
-		Articles article = new Articles();
+	public void saveArticle(Map<String, String> param){
+		Article article = new Article();
 		article.setArticleId(Long.valueOf(param.get("articleId")));
 		article.setContent(param.get("content"));
 		article.setId(param.get("id"));
@@ -38,20 +39,11 @@ public class ArticleServiceImpl implements ArticleService{
 		article.setRegDate(new Date());
 		article.setTitle(param.get("title"));
 		
-		boolean result = false;
-		
-		try{
-			articleRepository.save(article);
-			result = true;
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		return result;
+		articleRepository.save(article);
 	}
 	
 	@Override
-	public Articles getArticle(Long id){
+	public Article getArticle(Long id){
 		return articleRepository.findOne(id);
 	}
 	
@@ -62,7 +54,7 @@ public class ArticleServiceImpl implements ArticleService{
 	
 	@Override
 	public Long updateArticle(Map<String, String> param){
-		Articles article = new Articles();
+		Article article = new Article();
 		article.setArticleId(Long.valueOf(param.get("articleId")));
 		article.setContent(param.get("content"));
 		article.setId(param.get("id"));
@@ -70,6 +62,5 @@ public class ArticleServiceImpl implements ArticleService{
 		article.setTitle(param.get("title"));
 		
 		return articleRepository.save(article).getArticleId();
-	}
-
+	}	
 }

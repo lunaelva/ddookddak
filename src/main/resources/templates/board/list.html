@@ -18,7 +18,8 @@ table {width: 100%;border: none;border-collapse: separate; border-spacing: 0;}
 	$(document).ready(function(){
 		jQuery.getJSON("/article/list", function(data){
 			var tmp ="";
-			$.each(data, function(idx, entry){
+			console.log(data);
+			$.each(data.content, function(idx, entry){
 				 tmp = tmp + ' <tr> <td class="tit"><a href="/view/article/view/'+entry.articleId+'">'+entry.title+'</a></td>';
 				 tmp = tmp + ' <td>'+entry.nickname+'</td><td>'+new Date(entry.regDate).toLocaleString()+'</td></tr>';
 			});

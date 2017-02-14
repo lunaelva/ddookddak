@@ -37,6 +37,9 @@ jQuery(function() {
 				if(data){
 					location.href="/view/article/list";
 				}
+		}).fail(function(code,message){   
+			alert("code:"+code.status+"\n"+"message:"+message.message);
+			console.log(message);
 		});
 	});
 });

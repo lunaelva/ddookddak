@@ -1,4 +1,4 @@
-package com.ddook.ddak.model;
+package com.ddook.ddak.common.model;
 
 import org.springframework.web.multipart.MultipartFile;
 
