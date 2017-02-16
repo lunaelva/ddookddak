@@ -3,17 +3,21 @@ package com.ddook.ddak.board.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.ddook.ddak.common.audit.UserAuditable;
+import com.ddook.ddak.common.handler.AuditableListener;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@EntityListeners(AuditableListener.class)
 public class Board {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO) 
 	private int boardId;
@@ -30,25 +34,19 @@ public class Board {
 	private String mediaAddUse; //외부 컨텐츠 유무
 	private int coolTime; //글쓰기 쿨타임
 	private int commentCoolTime; //댓글 쿨타임	 
-	private LocalDateTime regDate;	
-	private LocalDateTime updDate;
+	
+	@Embedded
+	protected UserAuditable auditable = new UserAuditable();
 	
 	@OneToMany(mappedBy = "board", orphanRemoval = true)
 	@JsonIgnore
 	private List<BoardCategory> category;
 	
+	public Board(){}
 	
-	public List<BoardCategory> getCategory() {
-		return category;
-	}
-
-	public void setCategory(List<BoardCategory> category) {
-		this.category = category;
-	}
-
 	public Board(int boardId, String boardName, String boardKorName, String boardType, String hidden,
 			String commentUse, int pageLimit, String recommUse, String reportUse, String imageAddUse,
-			String mediaAddUse, int coolTime, int commentCoolTime, LocalDateTime regDate, LocalDateTime updDate, List<BoardCategory> category) {
+			String mediaAddUse, int coolTime, int commentCoolTime) {
 		this.boardId = boardId;
 		this.boardName = boardName;
 		this.boardKorName = boardKorName;
@@ -62,9 +60,6 @@ public class Board {
 		this.mediaAddUse = mediaAddUse;
 		this.coolTime = coolTime;
 		this.commentCoolTime = commentCoolTime;
-		this.regDate = regDate;
-		this.updDate = updDate;
-		this.category = category;
 	}
 	
 	public int getBoardId() {
@@ -145,17 +140,26 @@ public class Board {
 	public void setCommentCoolTime(int commentCoolTime) {
 		this.commentCoolTime = commentCoolTime;
 	}
-	public LocalDateTime getRegDate() {
-		return regDate;
+//	public LocalDateTime getRegDate() {
+//		return regDate;
+//	}
+//	public void setRegDate(LocalDateTime regDate) {
+//		this.regDate = regDate;
+//	}
+//	public LocalDateTime getUpdDate() {
+//		return updDate;
+//	}
+//	public void setUpdDate(LocalDateTime updDate) {
+//		this.updDate = updDate;
+//	}
+	
+	public List<BoardCategory> getCategory() {
+		return category;
 	}
-	public void setRegDate(LocalDateTime regDate) {
-		this.regDate = regDate;
+
+	public void setCategory(List<BoardCategory> category) {
+		this.category = category;
 	}
-	public LocalDateTime getUpdDate() {
-		return updDate;
-	}
-	public void setUpdDate(LocalDateTime updDate) {
-		this.updDate = updDate;
-	}
+
 	
 }

@@ -1,0 +1,4 @@
+INSERT INTO board(board_kor_name, board_name, board_type, comment_cool_time, comment_use, cool_time, hidden, image_add_use, media_add_use, page_limit, recomm_use, report_use, reg_date, upd_date) VALUES ( '자유', 'free','F', 0, 'N', 0, 'N', 'N', 'N', 10, 'N', 'N', '2017-02-17 17:55:00', '2017-02-17 18:22:00');
+
+INSERT INTO board_category(board_id, cate_name, hidden, reg_date, sort, upd_date)values(1, '공지', 'N', '2017-02-17 17:55:00', 0, '2017-02-17 17:55:00');
+INSERT INTO board_category(board_id, cate_name, hidden, reg_date, sort, upd_date)values(1, '잡담', 'N', '2017-02-17 17:55:00', 1, '2017-02-17 17:55:00');

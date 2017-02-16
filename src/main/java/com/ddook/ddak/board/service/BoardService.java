@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.ddook.ddak.board.model.Board;
+import com.ddook.ddak.board.model.BoardCategory;
 
 @Service("boardService")
 public interface BoardService {
@@ -13,4 +14,7 @@ public interface BoardService {
 	public Board getBoard(int boardId);
 	public void deleteBaord(int boardId);
 	public int updateBoard(Map<String, String> param);
+	
+	public void saveBoardCategory(Map<String, String> param);
+	public List<BoardCategory> getBoardCategory(int boardId);
 }
