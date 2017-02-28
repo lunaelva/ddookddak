@@ -26,7 +26,6 @@ public class FileUploadController {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset-utf-8");
 
-		String defaultPath = request.getRealPath("/");
 		String contextPath = request.getSession().getServletContext().getContextPath()+"/upload";
 		Date date = new Date();
 

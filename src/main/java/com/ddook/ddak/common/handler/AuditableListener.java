@@ -2,7 +2,6 @@ package com.ddook.ddak.common.handler;
 
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;
-import java.util.Calendar;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
