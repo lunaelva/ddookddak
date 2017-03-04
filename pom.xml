@@ -58,51 +58,11 @@
 		    <artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 		
-<!-- 	<dependency>
-		    <groupId>com.github.jknack</groupId>
-		    <artifactId>handlebars</artifactId>
-		    <version>4.0.6</version>
-		</dependency>  -->	
-
-	
-		<!-- Rocker Template -->
 		<dependency>
-		    <groupId>com.fizzed</groupId>
-		    <artifactId>rocker-runtime</artifactId>
-		    <version>0.15.0</version>
-		</dependency>
-	 
-		<!-- for hot-reloading support only during development -->
-		<dependency>
-		    <groupId>com.fizzed</groupId>
-		    <artifactId>rocker-compiler</artifactId>
-		    <version>0.15.0</version>
-		    <scope>provided</scope>
-		</dependency>
-
+           <groupId>pl.allegro.tech.boot</groupId>
+           <artifactId>handlebars-spring-boot-starter</artifactId>
+           <version>0.2.15</version>
+       </dependency>
 	</dependencies>
-	
-	<build>
-	    <plugins>
-	        <plugin>
-	        	<groupId>com.fizzed</groupId>
-	        	<artifactId>rocker-maven-plugin</artifactId>
-	        	<version>0.15.0</version>
-        		<executions>
-        			<execution>
-						<id>generate-rocker-templates</id>
-                 		<phase>generate-sources</phase>                 		
-                 		<!-- goals>
-                 			<goal>generate</goal>
-                 		</goals>  -->
-                 		<configuration>
-                 			<templateDirectory>${basedir}/src/main/java</templateDirectory>
-                 		</configuration>
-                            
-					</execution>
-           		</executions>
-	        </plugin>
-	    </plugins>
-	</build>
 	
 </project>

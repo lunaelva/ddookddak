@@ -29,19 +29,13 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void saveBoard(Map<String, String> param){
-		Board board = new Board(0
-				, param.get("boardName")
-				, param.get("boardKorName")
-				, param.get("boardType")
-				, param.get("hidden")
-				, param.get("commentUse")
-				, Integer.parseInt(param.get("pageLimit"))
-				, param.get("recommUse")
-				, param.get("reportUse")
-				, param.get("imageAddUse")
-				, param.get("mediaAddUse")
-				,  Integer.parseInt(param.get("coolTime"))
-				,  Integer.parseInt(param.get("commentCoolTime")));
+		Board board = new Board(0, param.get("boardName"), param.get("boardKorName"), param.get("boardType"), param.get("hidden"), param.get("commentUse")
+				, Integer.parseInt(param.get("pageLimit")), param.get("recommUse"), param.get("reportUse")
+						, param.get("imageAddUse"), param.get("mediaAddUse"), Integer.parseInt(param.get("coolTimeType"))
+				, Integer.parseInt(param.get("coolTime")), Integer.parseInt(param.get("commentCoolType")), Integer.parseInt(param.get("commentCoolTime"))
+				, Integer.parseInt(param.get("commentMaxCnt")), Integer.parseInt(param.get("writeAuthType"))
+				, Integer.parseInt(param.get("readAuthType")), Integer.parseInt(param.get("adminAuthType")), Integer.parseInt(param.get("writeMGrade"))
+				, Integer.parseInt(param.get("commentMGrade")));
 		
 		boardRepository.save(board);
 	}
@@ -58,19 +52,13 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public int updateBoard(Map<String, String> param){
-		Board board = new Board( Integer.parseInt(param.get("boardId"))
-				, param.get("boardName")
-				, param.get("boardKorName")
-				, param.get("boardType")
-				, param.get("hidden")
-				, param.get("commentUse")
-				, Integer.parseInt(param.get("pageLimit"))
-				, param.get("recommUse")
-				, param.get("reportUse")
-				, param.get("imageAddUse")
-				, param.get("mediaAddUse")
-				,  Integer.parseInt(param.get("coolTime"))
-				,  Integer.parseInt(param.get("commentCoolTime")));
+		Board board = new Board( Integer.parseInt(param.get("boardId")), param.get("boardName"), param.get("boardKorName"), param.get("boardType"), param.get("hidden"), param.get("commentUse")
+				, Integer.parseInt(param.get("pageLimit")), param.get("recommUse"), param.get("reportUse")
+				, param.get("imageAddUse"), param.get("mediaAddUse"), Integer.parseInt(param.get("coolTimeType"))
+		, Integer.parseInt(param.get("coolTime")), Integer.parseInt(param.get("commentCoolType")), Integer.parseInt(param.get("commentCoolTime"))
+		, Integer.parseInt(param.get("commentMaxCnt")), Integer.parseInt(param.get("writeAuthType"))
+		, Integer.parseInt(param.get("readAuthType")), Integer.parseInt(param.get("adminAuthType")), Integer.parseInt(param.get("writeMGrade"))
+		, Integer.parseInt(param.get("commentMGrade")));
 		return boardRepository.save(board).getBoardId();
 	}
 	
@@ -84,9 +72,7 @@ public class BoardServiceImpl implements BoardService {
 				, board
 				, param.get("hidden")
 				, param.get("cateName")
-				, Integer.parseInt(param.get("sort"))
-				, DateConvertor.convertDateToString(param.get("regDate"))
-				, DateConvertor.convertDateToString(param.get("updDate")));
+				, Integer.parseInt(param.get("sort")));
 		
 		boardCategoryRepository.save(boardCategory);
 	}

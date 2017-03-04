@@ -47,10 +47,10 @@ jQuery(function() {
 
 </head>
 <body>
-	<input type="text" id="articleId" th:attr="value = ${articleId}"/>
+	<input type="text" id="articleId" value = "{{articleId}}"/>
 	<!--/* <xmp> */-->
 	<h2>
-		Hello! <span th:text="${name}">${name}</span>
+		Hello! <span>{{name}}</span>
 	</h2>
 	<div>Thymeleaf version</div>
 

@@ -40,9 +40,9 @@ $(document).ready(function() {
 </head>
 <body>
 	<h2>
-		Hello! <span th:text="${name}">${name}</span>
+		Hello! <span>{{name}}</span>
 	</h2>
-	<p>글번호 : <span th:text="${articleId}" id="articleId">${articleId}</span></p>
+	<p>글번호 : <span id="articleId">{{articleId}}</span></p>
 	
 	<p>제목 : <span id="title"></span></p>
 	<hr/>
