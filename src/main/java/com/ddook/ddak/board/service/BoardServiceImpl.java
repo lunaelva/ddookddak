@@ -12,7 +12,6 @@ import com.ddook.ddak.board.model.Board;
 import com.ddook.ddak.board.model.BoardCategory;
 import com.ddook.ddak.board.repository.BoardCategoryRepository;
 import com.ddook.ddak.board.repository.BoardsRepository;
-import com.ddook.ddak.common.util.DateConvertor;
 
 @Service("boardService")
 @Transactional
@@ -29,13 +28,20 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void saveBoard(Map<String, String> param){
-		Board board = new Board(0, param.get("boardName"), param.get("boardKorName"), param.get("boardType"), param.get("hidden"), param.get("commentUse")
-				, Integer.parseInt(param.get("pageLimit")), param.get("recommUse"), param.get("reportUse")
-						, param.get("imageAddUse"), param.get("mediaAddUse"), Integer.parseInt(param.get("coolTimeType"))
-				, Integer.parseInt(param.get("coolTime")), Integer.parseInt(param.get("commentCoolType")), Integer.parseInt(param.get("commentCoolTime"))
-				, Integer.parseInt(param.get("commentMaxCnt")), Integer.parseInt(param.get("writeAuthType"))
-				, Integer.parseInt(param.get("readAuthType")), Integer.parseInt(param.get("adminAuthType")), Integer.parseInt(param.get("writeMGrade"))
-				, Integer.parseInt(param.get("commentMGrade")));
+		System.out.println(param.toString());
+		Board board = new Board(0, param.get("boardName")
+				, param.get("boardKorName")
+				, Integer.parseInt(param.get("boardType"))
+				, param.get("hidden")
+				, param.get("commentUse")
+				, Integer.parseInt(param.get("pageLimit"))
+				, param.get("recommUse")
+				, param.get("reportUse")
+				, param.get("imageAddUse")
+				, param.get("mediaAddUse")
+				,0 , 0, 0, 0
+				, Integer.parseInt(param.get("commentMaxCnt"))
+				,0,0,0,0,0);
 		
 		boardRepository.save(board);
 	}
@@ -52,13 +58,10 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public int updateBoard(Map<String, String> param){
-		Board board = new Board( Integer.parseInt(param.get("boardId")), param.get("boardName"), param.get("boardKorName"), param.get("boardType"), param.get("hidden"), param.get("commentUse")
+		Board board = new Board( Integer.parseInt(param.get("boardId")), param.get("boardName"), param.get("boardKorName"), Integer.parseInt(param.get("boardType")), param.get("hidden"), param.get("commentUse")
 				, Integer.parseInt(param.get("pageLimit")), param.get("recommUse"), param.get("reportUse")
-				, param.get("imageAddUse"), param.get("mediaAddUse"), Integer.parseInt(param.get("coolTimeType"))
-		, Integer.parseInt(param.get("coolTime")), Integer.parseInt(param.get("commentCoolType")), Integer.parseInt(param.get("commentCoolTime"))
-		, Integer.parseInt(param.get("commentMaxCnt")), Integer.parseInt(param.get("writeAuthType"))
-		, Integer.parseInt(param.get("readAuthType")), Integer.parseInt(param.get("adminAuthType")), Integer.parseInt(param.get("writeMGrade"))
-		, Integer.parseInt(param.get("commentMGrade")));
+				, param.get("imageAddUse"), param.get("mediaAddUse"),0
+				, 0, 0, 0, Integer.parseInt(param.get("commentMaxCnt")),0,0,0,0,0);
 		return boardRepository.save(board).getBoardId();
 	}
 	

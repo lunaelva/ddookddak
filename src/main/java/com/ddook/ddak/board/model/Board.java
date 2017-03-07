@@ -23,7 +23,7 @@ public class Board {
 	@Column(unique = true)
 	private String boardName; //게시판 영문 이름
 	private String boardKorName; //게시판 이름
-	private String boardType; //게시판 타입
+	private int boardType; //게시판 타입
 	private String hidden; //숨김여부
 	private String commentUse; //댓글 유무
 	private int pageLimit; //보여지는 게시글 수
@@ -31,9 +31,9 @@ public class Board {
 	private String reportUse; //신고 유무
 	private String imageAddUse; //이미지 첨부 유무
 	private String mediaAddUse; //외부 컨텐츠 유무
-	private int coolTimeType;//쿨타임 타입 0:분, 1:일
+	private int coolTimeType;//쿨타임 타입 1:분, 2:일
 	private int coolTime; //글쓰기 쿨타임
-	private int commentCoolType; //댓글 쿨타임 타입 0:분, 1:일
+	private int commentCoolType; //댓글 쿨타임 타입 1:분, 2:일
 	private int commentCoolTime; //댓글 쿨타임	 
 	private int commentMaxCnt; //댓글 수
 	private int writeAuthType; //쓰기타입
@@ -51,7 +51,7 @@ public class Board {
 	
 	public Board(){}
 	
-	public Board(int boardId, String boardName, String boardKorName, String boardType, String hidden, String commentUse,
+	public Board(int boardId, String boardName, String boardKorName, int boardType, String hidden, String commentUse,
 			int pageLimit, String recommUse, String reportUse, String imageAddUse, String mediaAddUse, int coolTimeType,
 			int coolTime, int commentCoolType, int commentCoolTime, int commentMaxCnt, int writeAuthType,
 			int readAuthType, int adminAuthType, int writeMGrade, int commentMGrade) {
@@ -103,11 +103,11 @@ public class Board {
 		this.boardKorName = boardKorName;
 	}
 
-	public String getBoardType() {
+	public int getBoardType() {
 		return boardType;
 	}
 
-	public void setBoardType(String boardType) {
+	public void setBoardType(int boardType) {
 		this.boardType = boardType;
 	}
 
