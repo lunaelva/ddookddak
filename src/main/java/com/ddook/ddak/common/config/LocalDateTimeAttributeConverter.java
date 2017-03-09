@@ -1,4 +1,4 @@
-package com.ddook.ddak.common.handler;
+package com.ddook.ddak.common.config;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

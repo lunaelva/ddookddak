@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ddook.ddak.board.model.Board;
-import com.ddook.ddak.board.model.BoardCategory;
 import com.ddook.ddak.board.service.BoardService;
 
 @RestController
@@ -38,22 +37,22 @@ public class BoardController {
 	public List<Board> boardList(){
 		return boardService.findBoards();
 	}
-	
-	@ResponseBody
-	@RequestMapping(value="/view")
+
+	@ResponseBody	
+	@RequestMapping(value="/view", method=RequestMethod.GET)
 	public Board getBoard(@RequestParam("boardId") int boardId){
-		return boardService.getBoard(boardId);
+		Board b = boardService.getBoard(boardId);
+		return     b;
 	}
+//	@ResponseBody
+//	@RequestMapping(value="/addcategory", method=RequestMethod.POST)
+//	public void addCategory(@RequestParam Map<String, String> param){
+//		boardService.saveBoardCategory(param);
+//	}
 	
-	@ResponseBody
-	@RequestMapping(value="/addcategory", method=RequestMethod.POST)
-	public void addCategory(@RequestParam Map<String, String> param){
-		boardService.saveBoardCategory(param);
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/category")
-	public List<BoardCategory> addCategory(@RequestParam("boardId") int boardId){
-		return boardService.getBoardCategory(boardId);
-	}
+//	@ResponseBody
+//	@RequestMapping(value="/category")
+//	public List<BoardCategory> addCategory(@RequestParam("boardId") int boardId){
+//		return boardService.getBoardCategory(boardId);
+//	}
 }

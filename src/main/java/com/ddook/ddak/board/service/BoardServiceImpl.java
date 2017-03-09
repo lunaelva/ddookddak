@@ -48,7 +48,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public Board getBoard(int boardId){
-		return boardRepository.getOne(boardId);
+		Board b =  boardRepository.findOne(boardId);
+		return b;
 	}
 	
 	@Override
@@ -65,25 +66,25 @@ public class BoardServiceImpl implements BoardService {
 		return boardRepository.save(board).getBoardId();
 	}
 	
-	@Override
-	public void saveBoardCategory(Map<String, String> param){
-		int boardId = Integer.parseInt(param.get("boardId"));
-		Board board = new Board();
-		board.setBoardId(boardId);
-		
-		BoardCategory boardCategory = new BoardCategory(0
-				, board
-				, param.get("hidden")
-				, param.get("cateName")
-				, Integer.parseInt(param.get("sort")));
-		
-		boardCategoryRepository.save(boardCategory);
-	}
+//	@Override
+//	public void saveBoardCategory(Map<String, String> param){
+//		int boardId = Integer.parseInt(param.get("boardId"));
+//		Board board = new Board();
+//		board.setBoardId(boardId);
+//		
+//		BoardCategory boardCategory = new BoardCategory(0
+//				, board
+//				, param.get("hidden")
+//				, param.get("cateName")
+//				, Integer.parseInt(param.get("sort")));
+//		
+//		boardCategoryRepository.save(boardCategory);
+//	}
 	
-	@Override
-	public List<BoardCategory> getBoardCategory(int boardId){
-		Board board = new Board();
-		board.setBoardId(boardId);
-		return boardCategoryRepository.findByBoard(board);
-	}
+//	@Override
+//	public List<BoardCategory> getBoardCategory(int boardId){
+//		Board board = new Board();
+//		board.setBoardId(boardId);
+//		return boardCategoryRepository.findByBoard(board);
+//	}
 }

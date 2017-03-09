@@ -32,7 +32,7 @@ public class ArticleServiceImpl implements ArticleService{
 	@Override
 	public void saveArticle(Map<String, String> param){
 		Article article = new Article();
-		article.setArticleId(Long.valueOf(param.get("articleId")));
+		article.setArticleId(Integer.valueOf(param.get("articleId")));
 		article.setContent(param.get("content"));
 		article.setId(param.get("id"));
 		article.setNickname(param.get("nickname"));
@@ -43,19 +43,19 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 	
 	@Override
-	public Article getArticle(Long id){
+	public Article getArticle(int id){
 		return articleRepository.findOne(id);
 	}
 	
 	@Override
-	public void deleteArticle(long articleId){
+	public void deleteArticle(int articleId){
 		articleRepository.delete(articleId);
 	}
 	
 	@Override
-	public Long updateArticle(Map<String, String> param){
+	public int updateArticle(Map<String, String> param){
 		Article article = new Article();
-		article.setArticleId(Long.valueOf(param.get("articleId")));
+		article.setArticleId(Integer.valueOf(param.get("articleId")));
 		article.setContent(param.get("content"));
 		article.setId(param.get("id"));
 		article.setNickname(param.get("nickname"));

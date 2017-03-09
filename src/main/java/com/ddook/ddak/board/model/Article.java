@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Article { 
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO) 
-	private Long articleId; 
+	private int articleId; 
 	private String id;
 	private String nickname;
 	private String title;
@@ -49,10 +49,10 @@ public class Article {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public Long getArticleId() {
+	public int getArticleId() {
 		return articleId;
 	}
-	public void setArticleId(Long articleId) {
+	public void setArticleId(int articleId) {
 		this.articleId = articleId;
 	}
 }

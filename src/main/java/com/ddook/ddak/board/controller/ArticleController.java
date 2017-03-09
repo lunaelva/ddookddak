@@ -57,7 +57,7 @@ public class ArticleController {
 	
 	@ResponseBody
 	@RequestMapping(value="/{articleId}", method=RequestMethod.GET)
-	public Article viewProc(@PathVariable("articleId") Long articleId){
+	public Article viewProc(@PathVariable("articleId") int articleId){
 		return articleService.getArticle(articleId);
 	}	
 	

@@ -17,9 +17,9 @@ public class BoardCategory {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO) 	
 	private int cateId;
-	@ManyToOne
-	@JoinColumn(name="board_id")
-	private Board board;
+//	@ManyToOne
+//	@JoinColumn(name="board_id")
+//	private Board board;
 	private String hidden;
 	private String cateName;
 	private int sort;
@@ -31,10 +31,10 @@ public class BoardCategory {
 	
 	
 	
-	public BoardCategory(int cateId, Board board, String hidden, String cateName, int sort) {
+	public BoardCategory(int cateId, String hidden, String cateName, int sort) {
 		super();
 		this.cateId = cateId;
-		this.board = board;
+//		this.board = board;
 		this.hidden = hidden;
 		this.cateName = cateName;
 		this.sort = sort;
@@ -54,15 +54,15 @@ public class BoardCategory {
 
 
 
-	public Board getBoard() {
-		return board;
-	}
-
-
-
-	public void setBoard(Board board) {
-		this.board = board;
-	}
+//	public Board getBoard() {
+//		return board;
+//	}
+//
+//
+//
+//	public void setBoard(Board board) {
+//		this.board = board;
+//	}
 
 
 

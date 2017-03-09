@@ -1,7 +1,5 @@
 package com.ddook.ddak.board.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -9,14 +7,12 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import com.ddook.ddak.common.audit.UserAuditable;
-import com.ddook.ddak.common.handler.AuditableListener;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ddook.ddak.common.config.AuditableListener;
 
 @Entity
-@EntityListeners(AuditableListener.class)
+//@EntityListeners(AuditableListener.class)
 public class Board {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO) 
 	private int boardId;
@@ -42,12 +38,12 @@ public class Board {
 	private int writeMGrade;// 글쓰기 등급
 	private int commentMGrade;//댓글쓰기 등급
 	
-	@Embedded
-	protected UserAuditable auditable = new UserAuditable();
+//	@Embedded
+//	protected UserAuditable auditable = new UserAuditable();
 	
-	@OneToMany(mappedBy = "board", orphanRemoval = true)
-	@JsonIgnore
-	private List<BoardCategory> category;
+//	@OneToMany(mappedBy = "board", orphanRemoval = true)
+//	@JsonIgnore
+//	private List<BoardCategory> category;
 	
 	public Board(){}
 	
@@ -248,12 +244,12 @@ public class Board {
 	}
 
 
-	public List<BoardCategory> getCategory() {
-		return category;
-	}
-
-	public void setCategory(List<BoardCategory> category) {
-		this.category = category;
-	}
-	
+//	public List<BoardCategory> getCategory() {
+//		return category;
+//	}
+//
+//	public void setCategory(List<BoardCategory> category) {
+//		this.category = category;
+//	}
+//	
 }

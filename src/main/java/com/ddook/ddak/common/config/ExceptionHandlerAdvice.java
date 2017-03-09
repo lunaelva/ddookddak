@@ -1,4 +1,4 @@
-package com.ddook.ddak.common.handler;
+package com.ddook.ddak.common.config;
 
 import java.sql.SQLException;
 

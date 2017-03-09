@@ -8,5 +8,5 @@ import com.ddook.ddak.board.model.Board;
 import com.ddook.ddak.board.model.BoardCategory;
 
 public interface BoardCategoryRepository extends JpaRepository<BoardCategory, Integer> {
-	List<BoardCategory> findByBoard(Board board);
+	//List<BoardCategory> findByBoard(Board board);
 }

@@ -1,4 +1,4 @@
-package com.ddook.ddak.common.handler;
+package com.ddook.ddak.common.config;
 
 public class TestException extends RuntimeException {
 	private static final long serialVersionUID = -8602905008569855730L;

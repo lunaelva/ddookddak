@@ -4,16 +4,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/view")
 public class ViewController {
 
-	@RequestMapping("/")
-	public String index(Model model){
-		model.addAttribute("name","자게");
-		return "index";
+	@RequestMapping("/a")
+	public ModelAndView index(){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("name","자게");
+		mav.setViewName("index");
+		return mav;
 	}
-	@RequestMapping("/view/article/{type}")
+	@RequestMapping("/article/{type}")
 	public String write(Model model, @PathVariable("type") String type) {
 		model.addAttribute("name","자게");
 		model.addAttribute("articleId",0);
@@ -21,7 +25,7 @@ public class ViewController {
 		return "articles/" + type;
 	}
 	
-	@RequestMapping("/view/article/{type}/{articleId}")
+	@RequestMapping("/article/{type}/{articleId}")
 	public String view(Model model, @PathVariable("type") String type, @PathVariable("articleId") Long articleId) {
 		model.addAttribute("name","자게");
 		model.addAttribute("articleId",articleId);
@@ -29,9 +33,11 @@ public class ViewController {
 		return "articles/" + type;
 	}
 
-	@RequestMapping("/view/board/")
+	@RequestMapping("/board")
 	public String boards(){
 		return "boards/board";
 	}
+	
+	
 	
 }

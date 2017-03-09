@@ -16,7 +16,7 @@ import com.ddook.ddak.board.model.Article;
 public interface ArticleService {
 	public Page<Article> findArticles(Pageable pageable);	
 	public void saveArticle(Map<String, String> param);
-	public Article getArticle(Long id);
-	public void deleteArticle(long articleId);
-	public Long updateArticle(Map<String, String> param);
+	public Article getArticle(int id);
+	public void deleteArticle(int articleId);
+	public int updateArticle(Map<String, String> param);
 }

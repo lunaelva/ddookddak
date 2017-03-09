@@ -15,6 +15,6 @@ public interface BoardService {
 	public void deleteBaord(int boardId);
 	public int updateBoard(Map<String, String> param);
 	
-	public void saveBoardCategory(Map<String, String> param);
-	public List<BoardCategory> getBoardCategory(int boardId);
+//	public void saveBoardCategory(Map<String, String> param);
+//	public List<BoardCategory> getBoardCategory(int boardId);
 }

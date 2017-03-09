@@ -1,4 +1,4 @@
-package com.ddook.ddak.common.handler;
+package com.ddook.ddak.common.config;
 
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;
