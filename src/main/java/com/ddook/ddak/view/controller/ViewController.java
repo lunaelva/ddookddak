@@ -35,6 +35,7 @@ public class ViewController {
 
 	@RequestMapping("/board")
 	public String boards(){
+		System.out.println(1111111111);
 		return "boards/board";
 	}
 	
