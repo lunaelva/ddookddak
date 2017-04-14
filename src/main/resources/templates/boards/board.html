@@ -44,6 +44,7 @@ $(document).ready(function() {
 
 function getList(){
 	jQuery.getJSON("/board/list", function(data){
+		
 		console.log(data);
 		$("#sidebar ul").empty();
 		jQuery.each(data, function(idx,item){

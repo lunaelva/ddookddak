@@ -48,7 +48,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// not needed in the Standard(s) toolbar.
 	//config.removeButtons = 'Underline,Subscript,Superscript';
 
-	config.removeButtons = 'Underline,Subscript,Superscript,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Scayt,Language,tliyoutube2';
+	config.removeButtons = 'Underline,Subscript,Superscript,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Scayt,Language,tliyoutube2, youtube';
 
 	
 

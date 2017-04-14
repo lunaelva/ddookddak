@@ -1,4 +1,7 @@
-INSERT INTO board(board_kor_name, board_name, board_type, comment_cool_time, comment_use, cool_time, hidden, image_add_use, media_add_use, page_limit, recomm_use, report_use, reg_date, upd_date) VALUES ( '자유', 'free','F', 0, 'N', 0, 'N', 'N', 'N', 10, 'N', 'N', '2017-02-17 17:55:00', '2017-02-17 18:22:00');
+INSERT INTO boards VALUES (1, '{"boardType" : "1", "pageLimit":"10","reportUse":"Y","boardKorName":"자유","imageAddUse":"Y","boardId":0,"commentMaxCnt":"5","recommUse":"Y","mediaAddUse":"Y" ,"commentUse":"Y"}','free');
+INSERT INTO boards VALUES (2, '{"boardType" : "2", "pageLimit":"16","reportUse":"Y","boardKorName":"이미지","imageAddUse":"Y","boardId":0,"commentMaxCnt":"5","recommUse":"Y","mediaAddUse":"Y","commentUse":"Y"}','image');
 
-INSERT INTO board_category(board_id, cate_name, hidden, reg_date, sort, upd_date)values(1, '공지', 'N', '2017-02-17 17:55:00', 0, '2017-02-17 17:55:00');
-INSERT INTO board_category(board_id, cate_name, hidden, reg_date, sort, upd_date)values(1, '잡담', 'N', '2017-02-17 17:55:00', 1, '2017-02-17 17:55:00');
+INSERT INTO board_category(category_id,board_id,cate_name,sort, hidden)values(1, 1, '자유', 1, 'N');
+INSERT INTO board_category(category_id,board_id,cate_name,sort, hidden)values(2, 1, '인증', 2, 'N');
+INSERT INTO board_category(category_id,board_id,cate_name,sort, hidden)values(3, 2, '팬아트', 1, 'N');
+INSERT INTO board_category(category_id,board_id,cate_name,sort, hidden)values(4, 2, '웹툰', 2, 'N');

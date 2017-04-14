@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.ddook.ddak.board.model.Article;
+import com.ddook.ddak.board.entity.Article;
 import com.ddook.ddak.board.repository.ArticlesRepository;
 
 @Service("articleService")
@@ -32,11 +32,11 @@ public class ArticleServiceImpl implements ArticleService{
 	@Override
 	public void saveArticle(Map<String, String> param){
 		Article article = new Article();
-		article.setArticleId(Integer.valueOf(param.get("articleId")));
+		article.setArticleId(Long.valueOf(param.get("articleId")));
+		article.setArticleNumber(Integer.);
 		article.setContent(param.get("content"));
 		article.setId(param.get("id"));
 		article.setNickname(param.get("nickname"));
-		article.setRegDate(new Date());
 		article.setTitle(param.get("title"));
 		
 		articleRepository.save(article);

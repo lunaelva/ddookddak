@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <title>글쓰기</title>
+<link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/editor/ckeditor.js"></script>
 <script type="text/javascript">
@@ -14,6 +15,37 @@ jQuery(function() {
 		enterMode : '2',
 		filebrowserImageUploadUrl: '/file/imageUpload'	
 	});
+	
+	CKEDITOR.on( 'dialogDefinition', function( ev ){
+	    // Take the dialog name and its definition from the event data.
+	    var dialogName = ev.data.name;
+	    var dialogDefinition = ev.data.definition;
+	    // Check if the definition is from the dialog we're
+	    // interested in (the 'image' dialog). This dialog name found using DevTools plugin
+	    if ( dialogName == 'image' ){
+	        // Remove the 'Link' and 'Advanced' tabs from the 'Image' dialog.
+	        dialogDefinition.removeContents( 'Link' );    //링크 탭 제거
+	        dialogDefinition.removeContents( 'advanced' );  //상세정보 탭 제거
+
+	        // Get a reference to the 'Image Info' tab.
+	        var infoTab = dialogDefinition.getContents( 'info' );  //info탭을 제거하면 이미지 업로드가 안된다.
+	        // Remove unnecessary widgets/elements from the 'Image Info' tab.
+	        infoTab.remove( 'txtHSpace'); //info 탭 내에 불필요한 엘레멘트들 제거
+	        infoTab.remove( 'txtVSpace');
+	        infoTab.remove( 'txtBorder');
+	        infoTab.remove( 'txtWidth');
+	        infoTab.remove( 'txtHeight');
+	        infoTab.remove( 'ratioLock');
+	        infoTab.remove( 'htmlPreview');
+	        
+	        dialogDefinition.onShow = function() {
+	            // This code will open the Link tab.
+	            this.selectPage( 'Upload' );
+	        };
+	        
+	 	}
+	});
+
 	
 	if($("#articleId").val() != 0){
 		jQuery.getJSON("/article/"+$("#articleId").val(), function(data){
@@ -52,8 +84,6 @@ jQuery(function() {
 	<h2>
 		Hello! <span>{{name}}</span>
 	</h2>
-	<div>Thymeleaf version</div>
-
 	<form id="articleForm">
 		제목 : <input type="text" id="title" name="title" value="title~~~"/><br/>
 		아이디 : <input type="text" id="id" name="id" value="maelva"/><br/>
