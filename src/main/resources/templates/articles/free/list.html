@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<title>글목록</title>
+<style type="text/css">
+table td{border-bottom: 1px dotted #a7a7a7;}
+table th{text-align:center;}
+table {width: 100%;border: none;border-collapse: separate; border-spacing: 0;}
+
+</style>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script type="text/javascript">
+</script>
+</head>
+<body>
+	<h2>
+		Hello! <span >{{boardInfo.boardKorName}} 게시판</span>
+	</h2>
+	<span>
+	<select name="category">
+		<option value="">전체</option>
+	{% for cate in cateInfo %}
+		<option value="{{ cate.categoryId }}">{{ cate.cateName }}</option>
+	{% endfor %}
+	</select>
+	</span>
+	<table>
+		<thead>
+			<tr>		
+				<th>제목</th>
+				<th>닉네임</th>
+				<th>날짜</th>
+			</tr>
+		</thead>
+		
+		<tbody id="list"></tbody>
+	</table>
+	
+	
+	<a href="/view/article/write">글쓰기</a>
+</body>
+</html>
